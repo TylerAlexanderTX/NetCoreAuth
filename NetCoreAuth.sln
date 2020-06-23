@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreAuth", "NetCoreAuth\NetCoreAuth.csproj", "{DF68146E-822B-4003-A6F3-B4B974AC75B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityExample", "IdentityExample\IdentityExample.csproj", "{95DE7461-5513-4DA3-B10F-5E5F5E07E8BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF68146E-822B-4003-A6F3-B4B974AC75B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF68146E-822B-4003-A6F3-B4B974AC75B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF68146E-822B-4003-A6F3-B4B974AC75B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF68146E-822B-4003-A6F3-B4B974AC75B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95DE7461-5513-4DA3-B10F-5E5F5E07E8BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95DE7461-5513-4DA3-B10F-5E5F5E07E8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95DE7461-5513-4DA3-B10F-5E5F5E07E8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95DE7461-5513-4DA3-B10F-5E5F5E07E8BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BF73F11-C8BB-4F43-B69A-B061CA9ADDDD}
+	EndGlobalSection
+EndGlobal
