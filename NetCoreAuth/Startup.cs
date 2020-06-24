@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetCoreAuth.AuthorizationRequirements;
@@ -41,6 +42,8 @@ namespace NetCoreAuth
                 //    policyBuilder.RequireClaim(ClaimTypes.DateOfBirth);
                 //});
 
+                config.AddPolicy("Admin", policyBuilder => policyBuilder.RequireClaim(ClaimTypes.Role, "Admin"));
+
                 config.AddPolicy("Claim.DoB", policyBuilder =>
                 {
                     policyBuilder.AddRequirements(new CustomRequireClaim(ClaimTypes.DateOfBirth));
@@ -49,7 +52,16 @@ namespace NetCoreAuth
 
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(config =>
+            {
+                //global authorization filter
+                var defaultAuthBuilder = new AuthorizationPolicyBuilder();
+                var defaultAuthPolicy = defaultAuthBuilder
+                .RequireAuthenticatedUser()
+                .Build();
+
+                config.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
