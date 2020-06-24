@@ -60,7 +60,7 @@ namespace NetCoreAuth
                 .RequireAuthenticatedUser()
                 .Build();
 
-                config.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
+                //config.Filters.Add(new AuthorizeFilter(defaultAuthPolicy));
             });
         }
 
