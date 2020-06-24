@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,8 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetCoreAuth.AuthorizationRequirements;
+using NetCoreAuth.Controllers;
+using NetCoreAuth.Transformer;
 
 namespace NetCoreAuth
 {
@@ -51,6 +54,8 @@ namespace NetCoreAuth
             });
 
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
+            services.AddScoped<IAuthorizationHandler, DemoAuthorizationHandler>();
+            services.AddScoped<IClaimsTransformation, ClaimsTransformation>();
 
             services.AddControllersWithViews(config =>
             {
