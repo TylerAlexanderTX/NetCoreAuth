@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetCoreAuth.AuthorizationRequirements;
 using NetCoreAuth.Controllers;
+using NetCoreAuth.CustomPolicyProvider;
 using NetCoreAuth.Transformer;
 
 namespace NetCoreAuth
@@ -53,6 +54,8 @@ namespace NetCoreAuth
                 });
             });
 
+            services.AddSingleton<IAuthorizationPolicyProvider, CustomAuthorizationPolicyProvider>();
+            services.AddScoped<IAuthorizationHandler, SecurityLevelHandler>();
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
             services.AddScoped<IAuthorizationHandler, DemoAuthorizationHandler>();
             services.AddScoped<IClaimsTransformation, ClaimsTransformation>();

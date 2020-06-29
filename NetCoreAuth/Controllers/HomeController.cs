@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreAuth.CustomPolicyProvider;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -40,13 +41,21 @@ namespace NetCoreAuth.Controllers
             return View("Secret");
         }
 
+        [SecurityLevel(5)]
+        public IActionResult SecretLevel()
+        {
+            return View("Secret");
+        }
+
         public IActionResult Authenticate()
         {
             var demoClaims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, "Bob"),
                 new Claim(ClaimTypes.Email, "Bob@email.com"),
-                new Claim(ClaimTypes.DateOfBirth, "11/12/2001")
+                new Claim(ClaimTypes.DateOfBirth, "11/12/2001"),
+                new Claim(ClaimTypes.Role, "Admin"),
+                new Claim(DynamicPolicies.SecurityLevel, "7"),
             };
 
             var driversLicenseClaim = new List<Claim>
